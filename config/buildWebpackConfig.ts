@@ -3,11 +3,14 @@ import { BuildOptions } from "./types/config"
 import { buildLoaders } from "./buildLoaders"
 import { buildPlugins } from "./buildPlugins"
 import { buildResolvers } from "./buildResolvers"
+import { buildDevServer } from "./buildDevServer"
 
-export function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
-	const {mode, paths} = options
+export function buildWebpackConfig(
+	options: BuildOptions
+): webpack.Configuration {
+	const { mode, paths, isDev } = options
 
-    return {
+	return {
 		//Указываем путь до __dirname == рабочая директория и участков путей (src и index.js).
 		mode,
 		entry: paths.entry,
@@ -17,11 +20,13 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
 			// Очищаем dist
 			clean: true,
 		},
-		devtool: "inline-source-map",
+
+		devtool: isDev ? "inline-source-map" : undefined,
 		module: {
 			rules: buildLoaders(),
 		},
 		resolve: buildResolvers(),
 		plugins: buildPlugins(paths),
+		devServer: isDev ? buildDevServer(options) : undefined,
 	}
 }

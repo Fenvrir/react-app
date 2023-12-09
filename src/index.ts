@@ -1,5 +1,7 @@
 function init(num: number) {
 	console.log("Init complete")
 
-    return num
+	return num
 }
+
+init(1)
