@@ -7,12 +7,12 @@ export default (env: BuildEnv) => {
 	const paths: BuildPaths = {
 		html: path.resolve(__dirname, "public", "index.html"),
 		dist: path.resolve(__dirname, "dist"),
-		entry: path.resolve(__dirname, "src", "index.ts"),
+		entry: path.resolve(__dirname, "src", "index.tsx"),
 	}
 
 	const mode: BuildMode = env.mode || "development"
 	const port = env.port || 3000
-	console.log(mode)
+
 	const isDev = mode === "development"
 
 	const config: webpack.Configuration = buildWebpackConfig({
