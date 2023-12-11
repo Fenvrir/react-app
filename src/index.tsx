@@ -7,10 +7,18 @@ import {
 	Route,
 	RouterProvider,
 } from "react-router-dom"
+import ThemeProvider from "./theme/ThemeProvider"
 
 const routes = createBrowserRouter(
 	createRoutesFromElements(
-		<Route path="/" element={<App />}>
+		<Route
+			path="/"
+			element={
+				<ThemeProvider>
+					<App />
+				</ThemeProvider>
+			}
+		>
 			{/* Lazy loiading в react-router 6.4 делается с помощью пропса lazy */}
 			<Route
 				path="main"
