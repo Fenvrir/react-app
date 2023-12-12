@@ -7,7 +7,7 @@ import {
 } from "./ThemeContext"
 
 interface UseThemeResiult {
-	theme: ThemeType
+	theme?: ThemeType
 	toggleTheme: () => void
 }
 
@@ -16,7 +16,9 @@ export function useTheme(): UseThemeResiult {
 
 	const toggleTheme = () => {
 		const newTheme = theme === THEME.basic ? THEME.dark : THEME.basic
-		setTheme(newTheme)
+		// TODO: как работает эта конструкция ? 
+		// ts-config кидает ошибку
+		setTheme!(newTheme)
 		localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme)
 	}
 

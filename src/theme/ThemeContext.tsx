@@ -1,4 +1,5 @@
 import { createContext } from "react"
+import { ValueOf } from "type-fest"
 
 const LOCAL_STORAGE_THEME_KEY = "theme"
 const THEME = {
@@ -6,8 +7,7 @@ const THEME = {
 	dark: "dark",
 } as const
 
-
-type ThemeType = keyof typeof THEME
+type ThemeType = ValueOf<typeof THEME>
 
 interface ThemeContextProps {
 	theme?: ThemeType
