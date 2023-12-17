@@ -4,7 +4,7 @@ import {
 	THEME,
 	ThemeContext,
 	ThemeType,
-} from "./ThemeContext"
+} from "@/shared/config/ThemeContext"
 
 interface Props {
 	children: React.ReactNode

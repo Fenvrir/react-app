@@ -1,6 +1,6 @@
 import { useRouteError } from "react-router-dom"
 
-function ErrorPage() {
+export function ErrorPage() {
     // TODO: поправить тип
 	const error: any = useRouteError()
 	console.error(error)
@@ -15,5 +15,3 @@ function ErrorPage() {
 		</div>
 	)
 }
-
-export default ErrorPage

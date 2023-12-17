@@ -1,5 +1,4 @@
-import { Suspense, useContext } from "react"
-import Counter from "../../components/Counter"
+import { Suspense } from "react"
 
 export function Component(props: any) {
 	return (
@@ -9,7 +8,6 @@ export function Component(props: any) {
 				Добавил пока что в таком стиле. Нужно проверить работоспособность в будущем. 
 			*/}
 			<Suspense fallback={<div>Loading...</div>}>
-				<Counter />
 				<div>MainPage</div>
 			</Suspense>
 		</>

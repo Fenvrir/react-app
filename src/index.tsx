@@ -1,38 +1,7 @@
 import { createRoot } from "react-dom/client"
-import App from "./App"
-import ErrorPage from "./pages/ErrorPage/ErrorPage"
-import {
-	createBrowserRouter,
-	createRoutesFromElements,
-	Route,
-	RouterProvider,
-} from "react-router-dom"
-import ThemeProvider from "./theme/ThemeProvider"
-
-const routes = createBrowserRouter(
-	createRoutesFromElements(
-		<Route
-			path="/"
-			element={
-				<ThemeProvider>
-					<App />
-				</ThemeProvider>
-			}
-		>
-			{/* Lazy loiading в react-router 6.4 делается с помощью пропса lazy */}
-			<Route
-				path="main"
-				lazy={() => import("./pages/MainPage/MainPage")}
-			/>
-			<Route
-				path="about"
-				lazy={() => import("./pages/AboutPage/AboutPage")}
-			/>
-			<Route errorElement={<ErrorPage />} />
-		</Route>
-	)
-)
+import { WithRoutes } from "./app/providers/RouteProvider"
+import { RouterProvider } from "react-router-dom"
 
 const root = createRoot(document.getElementById("root")!)
 
-root.render(<RouterProvider router={routes} />)
+root.render(<RouterProvider router={WithRoutes} />)
