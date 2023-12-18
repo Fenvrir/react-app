@@ -13,10 +13,10 @@ interface Props {
 const defaultTheme =
 	(localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as ThemeType) || THEME.dark
 
-const ThemeProvider: FC<Props> = ({ children }) => {
+export const ThemeProvider: FC<Props> = ({ children }) => {
 	const [theme, setTheme] = useState<ThemeType>(defaultTheme)
-	
-    const defaultProps = useMemo(
+
+	const defaultProps = useMemo(
 		() => ({
 			theme: theme,
 			setTheme: setTheme,
@@ -30,5 +30,3 @@ const ThemeProvider: FC<Props> = ({ children }) => {
 		</ThemeContext.Provider>
 	)
 }
-
-export default ThemeProvider

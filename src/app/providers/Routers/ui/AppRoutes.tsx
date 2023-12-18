@@ -6,10 +6,18 @@ import {
 	createRoutesFromElements,
 	Route,
 } from "react-router-dom"
-import { ThemeProvider } from "@/app/providers/ThemeProvider/index"
+import { RouteConfig } from "@/app/providers/Routers/index"
+import { ThemeProvider } from "@/app/providers/ThemeProvider/ui/ThemeProvider"
 
-export const routes = createBrowserRouter(
+console.log(RouteConfig)
+
+const paths = {
+	main: () => import("@/pages/MainPage/index"),
+}
+
+export const AppRoutes = createBrowserRouter(
 	createRoutesFromElements(
+		// TODO: Переписать роуты на версию 6.4
 		<Route
 			path="/"
 			element={
@@ -19,7 +27,7 @@ export const routes = createBrowserRouter(
 			}
 		>
 			{/* Lazy loiading в react-router 6.4 делается с помощью пропса lazy */}
-			<Route path="main" lazy={() => import("@/pages/MainPage/index")} />
+			<Route path="/" lazy={paths.main} />
 			<Route
 				path="about"
 				lazy={() => import("@/pages/AboutPage/index")}
